@@ -5,12 +5,19 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+/* Fluid typography for better scaling */
 body {
     font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
     color: #333;
     background: linear-gradient(135deg, #FF0000 0%, #FFFFFF 50%, #FF0000 100%);
     position: relative;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
 }
 
 body::before {
@@ -28,36 +35,48 @@ body::before {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 clamp(10px, 4vw, 20px);
+    width: 100%;
 }
 
-/* Navigation */
+/* Fluid navigation */
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    font-weight: 700;
+    color: white;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 1), 2px 2px 4px rgba(0, 0, 0, 1), 1px 1px 2px rgba(0, 0, 0, 1);
+    background: rgba(0, 0, 0, 0.8);
+    padding: clamp(0.5rem, 2vw, 0.8rem) clamp(0.8rem, 3vw, 1.2rem);
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Fluid candidate name */
+.candidate-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 8vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+}
+
+/* Navigation with fluid design */
 .navigation {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
+    padding: clamp(0.5rem, 2vw, 1rem) clamp(1rem, 4vw, 2rem);
     position: relative;
     z-index: 100;
     background: rgba(0, 0, 0, 0.4);
     border-radius: 15px;
     margin: 1rem 0;
-    padding: 1rem 2rem;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: white;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 1), 2px 2px 4px rgba(0, 0, 0, 1), 1px 1px 2px rgba(0, 0, 0, 1);
-    background: rgba(0, 0, 0, 0.8);
-    padding: 0.8rem 1.2rem;
-    border-radius: 12px;
-    backdrop-filter: blur(8px);
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .logo::after {
@@ -562,7 +581,82 @@ body::before {
     animation: canadianPulse 2s ease-in-out infinite;
 }
 
-/* Responsive Design */
+/* Enhanced Device Scaling and Responsive Design */
+
+/* Ultra-wide screens (1920px+) */
+@media (min-width: 1920px) {
+    .container {
+        max-width: 1400px;
+        padding: 0 40px;
+    }
+    
+    .candidate-name {
+        font-size: 4rem;
+    }
+    
+    .hero-section {
+        min-height: 100vh;
+    }
+    
+    .campaign-flyer {
+        max-width: 800px;
+    }
+    
+    .platform-grid,
+    .surprises-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+    }
+}
+
+/* Large desktops (1440px - 1919px) */
+@media (min-width: 1440px) and (max-width: 1919px) {
+    .container {
+        max-width: 1300px;
+        padding: 0 35px;
+    }
+    
+    .candidate-name {
+        font-size: 3.5rem;
+    }
+    
+    .campaign-flyer {
+        max-width: 700px;
+    }
+}
+
+/* Standard desktops (1200px - 1439px) */
+@media (min-width: 1200px) and (max-width: 1439px) {
+    .container {
+        max-width: 1200px;
+        padding: 0 30px;
+    }
+    
+    .candidate-name {
+        font-size: 3.2rem;
+    }
+}
+
+/* Small desktops and large tablets (1025px - 1199px) */
+@media (min-width: 1025px) and (max-width: 1199px) {
+    .container {
+        padding: 0 25px;
+    }
+    
+    .candidate-name {
+        font-size: 2.8rem;
+    }
+    
+    .platform-grid,
+    .surprises-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .events-timeline {
+        max-width: 900px;
+    }
+}
 
 /* Tablet Devices (768px - 1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -952,5 +1046,440 @@ body::before {
     
     .qualifications {
         background: #f5f5f5;
+    }
+}
+
+/* Events Section */
+.events-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 4rem 0;
+    position: relative;
+}
+
+.events-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="15" x="10" font-size="12" opacity="0.03">🏒</text><text y="35" x="70" font-size="10" opacity="0.02">🍁</text><text y="55" x="30" font-size="14" opacity="0.03">⛸️</text><text y="75" x="80" font-size="11" opacity="0.02">🦫</text></svg>') repeat;
+    pointer-events: none;
+}
+
+.events-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #2c3e50;
+    position: relative;
+    z-index: 10;
+}
+
+.events-timeline {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.events-timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, #FF0000, #FFFFFF, #FF0000);
+    border-radius: 2px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 4rem;
+}
+
+.timeline-icon {
+    position: absolute;
+    left: -15px;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    background: white;
+    border: 4px solid #FF0000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+}
+
+.timeline-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #FF0000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.highlight {
+    background: linear-gradient(135deg, #FF0000 0%, #FFFFFF 50%, #FF0000 100%);
+    color: #333;
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    margin-top: 1rem;
+    border: 2px solid #FF0000;
+}
+
+/* Surprises Section */
+.surprises-section {
+    background: white;
+    padding: 4rem 0;
+    position: relative;
+}
+
+.surprises-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="20" x="20" font-size="16" opacity="0.02">🎁</text><text y="60" x="60" font-size="14" opacity="0.03">❄️</text><text y="80" x="10" font-size="12" opacity="0.02">🎭</text></svg>') repeat;
+    pointer-events: none;
+}
+
+.surprises-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #2c3e50;
+    position: relative;
+    z-index: 10;
+}
+
+.surprises-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.surprise-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.surprise-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, #FF0000, #FFFFFF, #FF0000);
+    z-index: -1;
+    margin: -3px;
+    border-radius: inherit;
+}
+
+.surprise-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(255, 0, 0, 0.2);
+}
+
+.surprise-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.surprise-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.surprise-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Enhanced Mobile Responsiveness for New Sections */
+@media (max-width: 768px) {
+    .navigation {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0.5rem;
+        gap: 0.5rem;
+    }
+    
+    .logo {
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+    
+    .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+    }
+    
+    .nav-links a {
+        padding: 0.8rem 1.2rem;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.1);
+        margin-bottom: 0.2rem;
+        min-width: 120px;
+        text-align: center;
+    }
+    
+    .campaign-flyer {
+        margin: 0.5rem;
+        transform: none;
+    }
+    
+    .profile-photo {
+        width: clamp(80px, 20vw, 100px);
+        height: clamp(80px, 20vw, 100px);
+    }
+    
+    .events-timeline {
+        padding-left: 1rem;
+    }
+    
+    .events-timeline::before {
+        left: 10px;
+    }
+    
+    .timeline-item {
+        padding-left: 3rem;
+    }
+    
+    .timeline-icon {
+        left: -10px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .timeline-content {
+        padding: 1.5rem;
+    }
+    
+    .surprises-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .surprise-card {
+        padding: 1.5rem;
+    }
+    
+    .events-section h2,
+    .surprises-section h2,
+    .about-section h2,
+    .platform-section h2,
+    .contact-section h2 {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+    
+    .platform-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .social-buttons {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+    
+    .social-btn {
+        text-align: center;
+        padding: 1rem;
+        min-height: 48px;
+    }
+}
+
+/* Very small devices and improved touch targets */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 8px;
+    }
+    
+    .flyer-header {
+        padding: 1rem;
+    }
+    
+    .flyer-body {
+        padding: 0.5rem;
+    }
+    
+    .key-points {
+        gap: 0.5rem;
+    }
+    
+    .point {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .point-icon {
+        font-size: clamp(1.2rem, 6vw, 1.5rem);
+    }
+    
+    .vote-call {
+        padding: 1rem;
+    }
+    
+    .about-section,
+    .platform-section,
+    .contact-section,
+    .events-section,
+    .surprises-section {
+        padding: clamp(1.5rem, 5vw, 2rem) 0;
+    }
+    
+    .qualifications {
+        padding: 1rem;
+    }
+    
+    .platform-item {
+        padding: 1rem;
+    }
+    
+    .footer {
+        padding: 1rem 0;
+    }
+    
+    /* Enhanced touch targets for mobile */
+    .nav-links a,
+    .social-btn,
+    button,
+    .platform-item,
+    .surprise-card {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+/* Extra small devices (320px and below) */
+@media (max-width: 320px) {
+    .container {
+        padding: 0 5px;
+    }
+    
+    .campaign-flyer {
+        margin: 0.25rem;
+        border-radius: 10px;
+    }
+    
+    .profile-photo {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .social-btn {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+    
+    .timeline-content {
+        padding: 1rem;
+    }
+    
+    .surprise-card {
+        padding: 1rem;
+    }
+}
+
+/* Landscape orientation optimization */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero-section {
+        min-height: auto;
+        padding: 1rem 0;
+    }
+    
+    .navigation {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0.5rem 1rem;
+    }
+    
+    .nav-links {
+        flex-direction: row;
+        gap: 1rem;
+    }
+    
+    .campaign-flyer {
+        max-width: 90vw;
+        margin: 1rem auto;
+    }
+    
+    .flyer-header {
+        padding: 1rem;
+    }
+}
+
+/* High DPI and retina displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .candidate-photo {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+    
+    .flyer-header {
+        border-width: 2px;
+    }
+    
+    .vote-call {
+        border-width: 1px;
+    }
+    
+    /* Sharper text rendering on high DPI */
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 }
