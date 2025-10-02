@@ -535,6 +535,106 @@ body::before {
 }
 
 /* Responsive Design */
+
+/* Tablet Devices (768px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        padding: 0 30px;
+    }
+    
+    .candidate-name {
+        font-size: 2.5rem;
+    }
+    
+    .platform-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .contact-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .nav-links a {
+        padding: 0.6rem 1rem;
+        font-size: 1rem;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .nav-links a,
+    .social-btn {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .platform-item:hover,
+    .campaign-flyer:hover,
+    .candidate-photo:hover {
+        transform: none;
+    }
+    
+    .platform-item:active {
+        transform: scale(0.98);
+    }
+    
+    .social-btn:active {
+        transform: scale(0.95);
+    }
+}
+
+/* High-DPI Displays (Retina, etc.) */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .candidate-photo {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+    
+    .flyer-header {
+        border-width: 2px;
+    }
+    
+    .vote-call {
+        border-width: 1px;
+    }
+}
+
+/* Landscape Orientation on Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero-section {
+        min-height: auto;
+        padding: 2rem 0;
+    }
+    
+    .navigation {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .nav-links {
+        flex-direction: row;
+        gap: 1rem;
+    }
+    
+    .campaign-flyer {
+        max-width: 500px;
+    }
+    
+    .flyer-header {
+        padding: 1rem;
+    }
+    
+    .candidate-name {
+        font-size: 1.8rem;
+    }
+}
+
+/* Mobile Devices (max-width: 768px) */
 @media (max-width: 768px) {
     .nav-links {
         gap: 1rem;
@@ -569,5 +669,250 @@ body::before {
     .social-buttons {
         flex-direction: column;
         align-items: flex-start;
+    }
+    .navigation {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0.5rem 0;
+    }
+    .logo {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        text-align: center;
+    }
+    .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+    }
+    .nav-links a {
+        padding: 0.8rem 1.2rem;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.1);
+        margin-bottom: 0.2rem;
+    }
+    .main-image {
+        margin-bottom: 1rem;
+    }
+    .profile-photo {
+        width: 100px;
+        height: 100px;
+    }
+    .flyer-body {
+        padding: 1rem;
+    }
+    .key-points {
+        gap: 1rem;
+    }
+    .point-icon {
+        font-size: 1.5rem;
+        min-width: 35px;
+    }
+    .vote-call {
+        padding: 1rem;
+    }
+    .about-section,
+    .platform-section,
+    .contact-section {
+        padding: 2rem 0;
+    }
+    .about-section h2,
+    .platform-section h2,
+    .contact-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .qualifications {
+        padding: 1rem;
+    }
+    .platform-item {
+        padding: 1rem;
+    }
+    .footer {
+        padding: 1rem 0;
+    }
+}
+
+/* Very Small Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+    body {
+        font-size: 0.95rem;
+    }
+    .container {
+        padding: 0 8px;
+    }
+    .logo {
+        font-size: 1rem;
+    }
+    .candidate-name {
+        font-size: 1.2rem;
+    }
+    .flyer-header {
+        padding: 1rem;
+    }
+    .flyer-body {
+        padding: 0.5rem;
+    }
+    .profile-photo {
+        width: 70px;
+        height: 70px;
+    }
+    .key-points {
+        gap: 0.5rem;
+    }
+    .point h3 {
+        font-size: 0.95rem;
+    }
+    .point p {
+        font-size: 0.8rem;
+    }
+    .vote-call h3 {
+        font-size: 1.2rem;
+    }
+    .vote-date {
+        font-size: 0.85rem;
+    }
+    .about-section h2,
+    .platform-section h2,
+    .contact-section h2 {
+        font-size: 1.1rem;
+    }
+    .qualifications h3 {
+        font-size: 1rem;
+    }
+    .platform-item h3 {
+        font-size: 1rem;
+    }
+    .contact-info h3,
+    .social-links h3 {
+        font-size: 1rem;
+    }
+    .footer p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Extra Small Devices (max-width: 320px) */
+@media (max-width: 320px) {
+    .container {
+        padding: 0 5px;
+    }
+    
+    .candidate-name {
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+    
+    .campaign-flyer {
+        margin: 0.5rem;
+        border-radius: 10px;
+    }
+    
+    .profile-photo {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .point {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .point-icon {
+        font-size: 1.2rem;
+    }
+    
+    .social-buttons {
+        gap: 0.5rem;
+    }
+    
+    .social-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    body::before,
+    .hero-section::before {
+        display: none;
+    }
+    
+    .navigation {
+        display: none;
+    }
+    
+    .hero-section {
+        background: white;
+        min-height: auto;
+        padding: 1rem 0;
+    }
+    
+    .campaign-flyer {
+        transform: none;
+        box-shadow: none;
+        border: 2px solid #333;
+    }
+    
+    .flyer-header {
+        background: white;
+        color: #333;
+        border: none;
+    }
+    
+    .vote-call {
+        background: white;
+        border: 2px solid #333;
+    }
+    
+    .social-buttons {
+        display: none;
+    }
+    
+    .footer {
+        background: white;
+        color: #333;
+        border-top: 1px solid #333;
+    }
+    
+    a {
+        color: #333 !important;
+        text-decoration: underline;
+    }
+}
+
+/* Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .campaign-flyer:hover {
+        transform: none;
+    }
+    
+    .platform-item:hover {
+        transform: none;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    /* Keep the Canadian red/white theme for brand consistency */
+    /* But adjust text contrast for better readability */
+    .about-text,
+    .platform-item p,
+    .contact-info p {
+        color: #555;
+    }
+    
+    .qualifications {
+        background: #f5f5f5;
     }
 }
