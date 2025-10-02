@@ -46,12 +46,21 @@ body::before {
     font-size: 1.8rem;
     font-weight: 700;
     color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 1px 1px 2px rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
 }
 
 .logo::after {
     content: ' 🇨🇦';
     font-size: 1.2rem;
     margin-left: 0.5rem;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
 }
 
 .nav-links {
@@ -65,10 +74,17 @@ body::before {
     text-decoration: none;
     font-weight: 400;
     transition: opacity 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    backdrop-filter: blur(2px);
 }
 
 .nav-links a:hover {
     opacity: 0.8;
+    background: rgba(0, 0, 0, 0.4);
+    transform: translateY(-1px);
 }
 
 /* Hero Section & Campaign Flyer */
@@ -518,6 +534,16 @@ body::before {
     content: ' 🍁';
     display: inline-block;
     animation: mapleFloat 3s ease-in-out infinite;
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+    line-height: 1;
+}
+
+.candidate-name::before {
+    content: '🇨🇦 ';
+    display: inline-block;
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+    margin-right: 0.5rem;
+    line-height: 1;
 }
 
 /* Canadian Pride Pulse */
@@ -680,6 +706,11 @@ body::before {
         margin-bottom: 0.5rem;
         text-align: center;
     }
+    
+    .logo::after {
+        font-size: 1rem;
+        margin-left: 0.3rem;
+    }
     .nav-links {
         flex-direction: column;
         gap: 0.5rem;
@@ -744,6 +775,11 @@ body::before {
     }
     .logo {
         font-size: 1rem;
+    }
+    
+    .logo::after {
+        font-size: 0.8rem;
+        margin-left: 0.2rem;
     }
     .candidate-name {
         font-size: 1.2rem;
