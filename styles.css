@@ -56,10 +56,13 @@ body::before {
 /* Fluid candidate name */
 .candidate-name {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 8vw, 3rem);
+    font-size: clamp(1.5rem, 6vw, 3rem);
     font-weight: 700;
     margin-bottom: 0.5rem;
-    letter-spacing: 2px;
+    letter-spacing: clamp(1px, 0.5vw, 2px);
+    line-height: 1.2;
+    word-break: break-word;
+    hyphens: auto;
 }
 
 /* Navigation with fluid design */
@@ -178,11 +181,14 @@ body::before {
     position: relative;
     border: 3px solid #FF0000;
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    overflow: hidden;
 }
 
 .header-content {
     position: relative;
     z-index: 10;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .year-badge {
@@ -706,6 +712,160 @@ body::before {
     z-index: 1000;
 }
 
+/* CRAZY COFFEE ANIMATIONS! ☕ */
+@keyframes coffeeShootLeft {
+    0% {
+        left: 100vw;
+        transform: translateY(0) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-20px) rotate(180deg) scale(1.2);
+        opacity: 0.8;
+    }
+    100% {
+        left: -100px;
+        transform: translateY(0) rotate(360deg) scale(0.8);
+        opacity: 0;
+    }
+}
+
+@keyframes coffeeShootRight {
+    0% {
+        right: 100vw;
+        transform: translateY(0) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-30px) rotate(-180deg) scale(1.3);
+        opacity: 0.9;
+    }
+    100% {
+        right: -100px;
+        transform: translateY(10px) rotate(-360deg) scale(0.7);
+        opacity: 0;
+    }
+}
+
+@keyframes coffeeBounce {
+    0% {
+        top: 100vh;
+        transform: translateX(0) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+    25% {
+        top: 20vh;
+        transform: translateX(50px) rotate(90deg) scale(1.1);
+    }
+    50% {
+        top: 40vh;
+        transform: translateX(-30px) rotate(180deg) scale(1.2);
+    }
+    75% {
+        top: 10vh;
+        transform: translateX(80px) rotate(270deg) scale(0.9);
+    }
+    100% {
+        top: -100px;
+        transform: translateX(0) rotate(360deg) scale(0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes coffeeSpiral {
+    0% {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(0deg) scale(0.5);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(72deg) scale(1);
+    }
+    40% {
+        transform: translate(100px, -100px) rotate(144deg) scale(1.2);
+    }
+    60% {
+        transform: translate(-150px, 50px) rotate(216deg) scale(1.1);
+    }
+    80% {
+        transform: translate(200px, 100px) rotate(288deg) scale(0.8);
+    }
+    100% {
+        transform: translate(-300px, -200px) rotate(360deg) scale(0.3);
+        opacity: 0;
+    }
+}
+
+@keyframes coffeeZigzag {
+    0% {
+        left: -50px;
+        top: 20%;
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+    }
+    20% {
+        left: 20%;
+        top: 10%;
+        transform: rotate(45deg) scale(1.1);
+    }
+    40% {
+        left: 40%;
+        top: 30%;
+        transform: rotate(-45deg) scale(0.9);
+    }
+    60% {
+        left: 60%;
+        top: 15%;
+        transform: rotate(90deg) scale(1.2);
+    }
+    80% {
+        left: 80%;
+        top: 25%;
+        transform: rotate(-90deg) scale(0.8);
+    }
+    100% {
+        left: 100vw;
+        top: 20%;
+        transform: rotate(180deg) scale(0.5);
+        opacity: 0;
+    }
+}
+
+.coffee-animation {
+    position: fixed;
+    font-size: 2rem;
+    pointer-events: none;
+    z-index: 999;
+    user-select: none;
+}
+
+.coffee-left {
+    animation: coffeeShootLeft 3s linear infinite;
+    animation-delay: var(--delay);
+}
+
+.coffee-right {
+    animation: coffeeShootRight 3.5s linear infinite;
+    animation-delay: var(--delay);
+}
+
+.coffee-bounce {
+    animation: coffeeBounce 4s ease-in-out infinite;
+    animation-delay: var(--delay);
+}
+
+.coffee-spiral {
+    animation: coffeeSpiral 5s ease-in-out infinite;
+    animation-delay: var(--delay);
+}
+
+.coffee-zigzag {
+    animation: coffeeZigzag 4.5s ease-in-out infinite;
+    animation-delay: var(--delay);
+}
+
 /* Maple Leaf Animation */
 @keyframes mapleFloat {
     0%, 100% {
@@ -1029,7 +1189,9 @@ body::before {
         font-size: 0.95rem;
     }
     .container {
-        padding: 0 8px;
+        padding: 0 clamp(5px, 2vw, 8px);
+        max-width: 100vw;
+        overflow-x: hidden;
     }
     .logo {
         font-size: 1rem;
@@ -1040,13 +1202,23 @@ body::before {
         margin-left: 0.2rem;
     }
     .candidate-name {
-        font-size: 1.2rem;
+        font-size: clamp(1.3rem, 5vw, 1.8rem);
+        letter-spacing: 1px;
+        line-height: 1.1;
+        word-break: break-word;
+        overflow-wrap: break-word;
     }
     .flyer-header {
-        padding: 1rem;
+        padding: 1.5rem 0.8rem;
     }
+    
+    .header-content {
+        max-width: 100%;
+        overflow: hidden;
+    }
+    
     .flyer-body {
-        padding: 0.5rem;
+        padding: 1rem 0.5rem;
     }
     .profile-photo {
         width: 70px;
@@ -1530,7 +1702,15 @@ body::before {
 /* Very small devices and improved touch targets */
 @media (max-width: 480px) {
     .container {
-        padding: 0 8px;
+        padding: 0 clamp(5px, 2vw, 8px);
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+    
+    .campaign-flyer {
+        margin: 0.5rem clamp(5px, 2vw, 8px);
+        max-width: calc(100vw - 1rem);
+        overflow: hidden;
     }
     
     .flyer-header {
@@ -1593,12 +1773,25 @@ body::before {
 /* Extra small devices (320px and below) */
 @media (max-width: 320px) {
     .container {
-        padding: 0 5px;
+        padding: 0 4px;
+        max-width: 100vw;
+    }
+    
+    .candidate-name {
+        font-size: clamp(1.1rem, 4vw, 1.4rem) !important;
+        letter-spacing: 0.5px;
+        line-height: 1.1;
+        word-break: break-word;
     }
     
     .campaign-flyer {
-        margin: 0.25rem;
+        margin: 0.25rem 4px;
         border-radius: 10px;
+        max-width: calc(100vw - 8px);
+    }
+    
+    .flyer-header {
+        padding: 1rem 0.5rem;
     }
     
     .profile-photo {
