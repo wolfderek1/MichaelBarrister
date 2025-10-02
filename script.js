@@ -249,10 +249,14 @@ class CoffeeAnimationManager {
         this.isActive = true;
         this.maxCoffees = 8;
         this.activeCoffees = 0;
+        console.log('☕ Coffee Animation Manager initialized!');
     }
 
     createCoffeeElement() {
-        if (this.activeCoffees >= this.maxCoffees) return;
+        if (this.activeCoffees >= this.maxCoffees) {
+            console.log('☕ Max coffees reached, skipping...');
+            return;
+        }
 
         const coffee = document.createElement('div');
         const randomEmoji = this.coffeeEmojis[Math.floor(Math.random() * this.coffeeEmojis.length)];
@@ -288,12 +292,15 @@ class CoffeeAnimationManager {
         document.body.appendChild(coffee);
         this.activeCoffees++;
         
+        console.log(`☕ Created ${randomEmoji} with ${randomAnimation} animation`);
+        
         // Remove after animation completes
         const animationDuration = this.getAnimationDuration(randomAnimation) * 1000 + delay * 1000;
         setTimeout(() => {
             if (coffee.parentNode) {
                 coffee.remove();
                 this.activeCoffees--;
+                console.log('☕ Coffee removed, active count:', this.activeCoffees);
             }
         }, animationDuration);
     }
@@ -312,6 +319,7 @@ class CoffeeAnimationManager {
     startCoffeeStorm() {
         if (!this.isActive) return;
         
+        console.log('☕ Starting coffee storm!');
         // Create multiple coffees in quick succession
         for (let i = 0; i < 5; i++) {
             setTimeout(() => {
@@ -321,6 +329,7 @@ class CoffeeAnimationManager {
     }
     
     startRandomCoffees() {
+        console.log('☕ Starting random coffee generation...');
         setInterval(() => {
             if (this.isActive && Math.random() < 0.7) {
                 this.createCoffeeElement();
@@ -329,6 +338,7 @@ class CoffeeAnimationManager {
     }
     
     startCoffeeStorms() {
+        console.log('☕ Starting periodic coffee storms...');
         setInterval(() => {
             if (this.isActive && Math.random() < 0.3) {
                 this.startCoffeeStorm();
@@ -339,6 +349,7 @@ class CoffeeAnimationManager {
     toggle() {
         this.isActive = !this.isActive;
         console.log('Coffee animations:', this.isActive ? 'ON ☕' : 'OFF');
+        return this.isActive;
     }
 }
 
@@ -445,3 +456,51 @@ document.addEventListener('keydown', (e) => {
         setTimeout(() => celebration.remove(), 3000);
     }
 });
+
+// FORCE START COFFEE ANIMATIONS - IMMEDIATE EXECUTION!
+console.log('🚀 LOADING COFFEE SYSTEM...');
+
+// Initialize immediately when script loads
+if (typeof window !== 'undefined') {
+    console.log('☕ Creating coffee manager...');
+    window.coffeeManager = new CoffeeAnimationManager();
+    
+    // Start coffee animations after a short delay
+    setTimeout(() => {
+        console.log('☕ STARTING COFFEE CHAOS!');
+        coffeeManager.createCoffeeElement();
+        coffeeManager.createCoffeeElement();
+        coffeeManager.createCoffeeElement();
+        
+        // Start continuous animations
+        coffeeManager.startRandomCoffees();
+        coffeeManager.startCoffeeStorms();
+        
+        console.log('☕ Coffee system fully activated! Press T to toggle, H for hockey storm!');
+    }, 2000);
+}
+
+// Also try when DOM is ready (backup)
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('📄 DOM Ready - Coffee backup initialization...');
+    if (!window.coffeeManager) {
+        window.coffeeManager = new CoffeeAnimationManager();
+        setTimeout(() => {
+            coffeeManager.createCoffeeElement();
+            coffeeManager.startRandomCoffees();
+            coffeeManager.startCoffeeStorms();
+        }, 1000);
+    }
+});
+
+// Manual test function for debugging
+window.testCoffee = function() {
+    console.log('🧪 Manual coffee test!');
+    if (window.coffeeManager) {
+        window.coffeeManager.createCoffeeElement();
+        return 'Coffee created!';
+    } else {
+        console.error('Coffee manager not found!');
+        return 'Error: No coffee manager!';
+    }
+};
