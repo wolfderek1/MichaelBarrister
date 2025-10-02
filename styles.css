@@ -50,7 +50,7 @@ body::before {
 /* Fluid navigation */
 .logo {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1rem, 4vw, 1.8rem);
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
     font-weight: 700;
     color: white;
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 1), 2px 2px 4px rgba(0, 0, 0, 1), 1px 1px 2px rgba(0, 0, 0, 1);
@@ -59,21 +59,6 @@ body::before {
     border-radius: 12px;
     backdrop-filter: blur(8px);
     border: 2px solid rgba(255, 255, 255, 0.2);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
-    flex-shrink: 1;
-    min-width: 0;
-}
-
-/* Logo responsive text display */
-.logo-short {
-    display: none;
-}
-
-.logo-full {
-    display: inline;
 }
 
 /* Fluid candidate name */
@@ -103,7 +88,6 @@ body::before {
     border: 1px solid rgba(255, 255, 255, 0.1);
     flex-wrap: wrap;
     gap: 1rem;
-    min-height: 60px;
 }
 
 .logo::after {
@@ -1162,10 +1146,6 @@ body::before {
         margin-bottom: 0.5rem;
         text-align: center;
         padding: 0.6rem 0.8rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 100%;
     }
     
     .logo::after {
@@ -1242,29 +1222,8 @@ body::before {
         overflow-x: hidden;
     }
     .logo {
-        font-size: clamp(0.8rem, 3.5vw, 1rem);
-        padding: 0.4rem 0.6rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 60vw;
-    }
-    
-    /* Alternative: Show abbreviated logo on tiny screens */
-    @media (max-width: 350px) {
-        .logo {
-            max-width: 55vw;
-            font-size: 0.85rem;
-        }
-        
-        /* Switch to short logo version */
-        .logo-full {
-            display: none;
-        }
-        
-        .logo-short {
-            display: inline;
-        }
+        font-size: clamp(0.9rem, 4vw, 1.1rem);
+        padding: 0.5rem 0.8rem;
     }
     
     .logo::after {
