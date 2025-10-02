@@ -8,6 +8,8 @@
 html {
     font-size: 16px;
     scroll-behavior: smooth;
+    /* Prevent horizontal scrolling */
+    overflow-x: hidden;
 }
 
 /* Fluid typography for better scaling */
@@ -18,6 +20,12 @@ body {
     background: linear-gradient(135deg, #FF0000 0%, #FFFFFF 50%, #FF0000 100%);
     position: relative;
     font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    /* Prevent horizontal scrolling */
+    overflow-x: hidden;
+    width: 100%;
+    /* Handle viewport height inconsistencies on mobile */
+    min-height: 100vh;
+    min-height: 100dvh;
 }
 
 body::before {
@@ -133,12 +141,15 @@ body::before {
 /* Hero Section & Campaign Flyer */
 .hero-section {
     min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for mobile browsers */
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, #FF0000 0%, #FFFFFF 20%, #FF0000 40%, #FFFFFF 60%, #FF0000 80%, #FFFFFF 100%);
     position: relative;
     overflow: hidden;
+    padding: 2rem 0;
 }
 
 .hero-section::before {
@@ -156,6 +167,10 @@ body::before {
     position: relative;
     z-index: 10;
     margin-top: 2rem;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
 }
 
 .campaign-flyer {
@@ -1080,6 +1095,12 @@ body::before {
 
 /* Mobile Devices (max-width: 768px) */
 @media (max-width: 768px) {
+    .hero-section {
+        min-height: 100vh;
+        min-height: 100svh; /* Small viewport height for mobile */
+        padding: 1rem 0;
+    }
+    
     .nav-links {
         gap: 1rem;
     }
@@ -1185,6 +1206,11 @@ body::before {
 
 /* Very Small Mobile Devices (max-width: 480px) */
 @media (max-width: 480px) {
+    .hero-section {
+        min-height: auto;
+        padding: 0.5rem 0;
+    }
+    
     body {
         font-size: 0.95rem;
     }
@@ -1817,7 +1843,8 @@ body::before {
 @media (max-height: 500px) and (orientation: landscape) {
     .hero-section {
         min-height: auto;
-        padding: 1rem 0;
+        height: auto;
+        padding: 0.5rem 0;
     }
     
     .navigation {
